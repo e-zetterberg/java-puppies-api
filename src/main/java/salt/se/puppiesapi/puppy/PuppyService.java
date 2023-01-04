@@ -17,7 +17,7 @@ public class PuppyService {
     }
 
     public Puppy createPuppy(Puppy newPuppy) {
-        return repository.savePuppy(newPuppy);
+        return repository.createPuppy(newPuppy);
     }
 
     public List<Puppy> getAllPuppies() {
@@ -26,7 +26,7 @@ public class PuppyService {
 
     public Puppy updatePuppy(long id, Puppy newPuppy) {
         Puppy updatedPuppy = new Puppy(id, newPuppy);
-        return repository.savePuppy(updatedPuppy);
+        return repository.updatePuppy(updatedPuppy);
     }
     public void deletePuppy(long id) {
         repository.deletePuppyById(id);

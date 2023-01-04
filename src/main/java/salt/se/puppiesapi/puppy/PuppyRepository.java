@@ -24,7 +24,14 @@ public class PuppyRepository{
         puppyRepository.deleteById(id);
     }
 
-    public Puppy savePuppy(Puppy puppy){
+    public Puppy createPuppy(Puppy newPuppy) {
+        if (puppyRepository.existsById(newPuppy.getPuppyId())) {
+            throw new UnsupportedOperationException();
+        }
+        return puppyRepository.save(newPuppy);
+    }
+
+    public Puppy updatePuppy(Puppy puppy){
         return puppyRepository.save(puppy);
     }
 }

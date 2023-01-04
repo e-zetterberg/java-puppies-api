@@ -45,10 +45,18 @@ public class Puppy {
         this.birthDate = birthDate;
     }
 
+    public Puppy(){}
     public Puppy(long id, Puppy puppy) {
         this.puppyId = id;
         this.name = puppy.getName();
         this.breed = puppy.getBreed();
         this.birthDate = puppy.getBirthDate();
     }
+
+    public Puppy(PuppyDto dto) {
+        this.name = dto.name();
+        this.breed = dto.breed();
+
+    }
+
 }
