@@ -36,9 +36,9 @@ public class PuppyController {
     }
 
     @PostMapping
-    ResponseEntity<Puppy> createPuppy(@RequestBody Puppy newPuppy){
+    ResponseEntity<Puppy> createPuppy(@RequestBody PuppyDto newPuppydto){
         try {
-            Puppy createdPuppy = service.createPuppy(newPuppy);
+            Puppy createdPuppy = service.createPuppy(new Puppy(newPuppydto));
             URI location = URI.create("/api/puppies/" + createdPuppy.puppyId);
             return ResponseEntity.created(location).body(createdPuppy);
         } catch (IllegalArgumentException e) {
@@ -49,9 +49,9 @@ public class PuppyController {
     }
 
     @PutMapping("/{puppyId}")
-    ResponseEntity<Puppy> updatePuppy(@PathVariable long puppyId, @RequestBody Puppy puppy){
+    ResponseEntity<Puppy> updatePuppy(@PathVariable long puppyId, @RequestBody PuppyDto puppydto){
         try {
-            Puppy updatedPuppy = service.updatePuppy(puppyId, puppy);
+            Puppy updatedPuppy = service.updatePuppy(puppyId, new Puppy(puppydto));
             return ResponseEntity.accepted().body(updatedPuppy);
         } catch (IllegalArgumentException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
