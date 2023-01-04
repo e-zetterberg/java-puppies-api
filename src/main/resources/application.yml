@@ -1,0 +1,34 @@
+server:
+  port: 8080
+  error:
+    include-message: always
+spring:
+  output:
+    ansi:
+      enabled: always
+  sql:
+    init:
+      platform: postgresql
+      mode: always
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres123
+    hikari:
+      connectionTimeout: 2000
+      maximumPoolSize: 5
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create
+    ## Logging settings
+debug: true
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR
